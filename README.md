@@ -28,8 +28,8 @@ This is the **Minimal Budgeted Curriculum Cover** problem: select the fewest cou
 - **outputPicture.py**  
   Python plotting script to visualize experimental results (e.g., runtime vs. skills/courses, selected courses vs. skill count) from the CSV logs.
 
-### 3. NP-Complete Reduction (Sketch)
-- **Formulation.** Universe = required skills \(Q\). Each course \(c_i\) is a set \(S_i \subseteq Q\) with attributes: price \(p_i\), duration \(d_i\), rating \(r_i\). Constraints: \(\sum p_i \le B\), \(\sum d_i \le D\), and \(r_i \ge R\) for chosen courses. Objective: minimize the number of courses whose union covers \(Q\) while satisfying all constraints.
-- **NP-hardness.** Classic Set Cover is a special case obtained by making constraints non-restrictive (e.g., \(p_i = d_i = 0\), \(r_i = 1\), and large \(B, D\), low \(R\)). Since Set Cover is NP-complete, this constrained variant is NP-hard.
-- **In NP.** Given a candidate course set, checking coverage and constraint satisfaction is polynomial. Thus, the decision version is NP-complete.
-- **Heuristic.** Because exact solutions are infeasible at scale, the greedy algorithm provides a fast, near-good solution under the given constraints; empirical results align with the analyzed \(O(m \cdot n)\) scanning behavior (with \(m\) skills, \(n\) courses) when using precomputed incidence structures.
+### 3. NP-Complete Reduction 
+- **Formulation.** Treat the required skills as the universe. Each course corresponds to a subset of skills and carries attributes: price, duration, and rating. Constraints require total price within the budget, total duration within the time limit, and each chosen course meeting the rating threshold. The goal is to pick the fewest courses whose combined skills cover all requirements while respecting these constraints.
+- **NP-hardness.** Classic Set Cover is a special case when the constraints are non-restrictive (zero costs/durations, permissive budgets/time, and low rating threshold). Since Set Cover is NP-complete, this constrained version is NP-hard.
+- **In NP.** Given a candidate set of courses, checking that all skills are covered and that budget/time/rating constraints hold can be done in polynomial time. Therefore, the decision version is NP-complete.
+- **Heuristic.** Exact solutions are infeasible at scale, so a greedy algorithm is used to find a near-good solution efficiently under the constraints. Experiments show runtime growth consistent with the expected scan complexity over courses and skills.

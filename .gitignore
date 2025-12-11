@@ -35,7 +35,6 @@ wheels/
 MANIFEST
 
 # --- Conda/Virtual Env ---
-# 忽略你自己建的环境文件夹
 venv/
 env/
 ENV/
@@ -49,21 +48,6 @@ miniconda3/
 *.swo
 .DS_Store
 
-# --- LaTeX (Overleaf 产生的中间文件) ---
-*.aux
-*.bbl
-*.blg
-*.fdb_latexmk
-*.fls
-*.lof
-*.log
-*.lot
-*.out
-*.pdf
-*.synctex.gz
-*.toc
-
-# --- Generated Result Files (可选) ---
-# 如果你想保留实验结果csv就注释掉下面这行，不想保留就留着
-# *.csv
-# *.png
+# --- Generated Result Files ---
+*.csv
+*.png
